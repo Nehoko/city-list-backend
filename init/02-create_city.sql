@@ -4,7 +4,7 @@ CREATE TABLE city
 (
     id    BIGINT  NOT NULL,
     name  VARCHAR NOT NULL,
-    photo VARCHAR NOT NULL,
+    photo TEXT NOT NULL,
     CONSTRAINT pk_city PRIMARY KEY (id)
 );
 
