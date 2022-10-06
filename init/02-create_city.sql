@@ -1,0 +1,10 @@
+CREATE SEQUENCE IF NOT EXISTS hibernate_sequence START WITH 1 INCREMENT BY 1;
+
+CREATE TABLE city
+(
+    id    BIGINT  NOT NULL,
+    name  VARCHAR NOT NULL,
+    photo VARCHAR NOT NULL,
+    CONSTRAINT pk_city PRIMARY KEY (id)
+);
+

@@ -1,0 +1,43 @@
+version: '3'
+
+services:
+  app:
+    image: 'city-list:0.0.1-SNAPSHOT'
+    build:
+      context: ./
+    container_name: app
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/city
+      - SPRING_DATASOURCE_USERNAME=city
+      - SPRING_DATASOURCE_PASSWORD=city
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+    tty: true
+    stdin_open: true
+    deploy:
+      restart_policy:
+        condition: on-failure
+        max_attempts: 5
+  db:
+    image: 'postgres:latest'
+    container_name: db
+    healthcheck:
+      test: [ "CMD", "pg_isready", "-q", "-d", "postgres", "-U", "city" ]
+      timeout: 45s
+      interval: 10s
+      retries: 10
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=city
+      - POSTGRES_PASSWORD=city
+      - POSTGRES_DB=city
+      - APP_DB_USER=city
+      - APP_DB_PASS=city
+      - APP_DB_NAME=city
+    volumes:
+      - ./init:/docker-entrypoint-initdb.d/
