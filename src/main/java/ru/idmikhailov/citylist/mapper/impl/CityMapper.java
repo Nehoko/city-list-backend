@@ -18,6 +18,10 @@ public class CityMapper implements Mapper<CityDto, City> {
     public City toEntity(CityDto cityDto) {
         if (cityDto == null) return null;
 
-        return new City(cityDto.getId(), cityDto.getName(), cityDto.getPhoto());
+        return City.builder()
+                .id(cityDto.getId())
+                .name(cityDto.getName())
+                .photo(cityDto.getPhoto())
+                .build();
     }
 }
