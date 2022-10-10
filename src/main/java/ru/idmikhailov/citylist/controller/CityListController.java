@@ -2,6 +2,7 @@ package ru.idmikhailov.citylist.controller;
 
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import ru.idmikhailov.citylist.dto.CityDto;
 import ru.idmikhailov.citylist.service.CityListService;
@@ -21,9 +22,13 @@ public class CityListController {
         return cityListService.getCityPage(page, size, search);
     }
 
-    @PutMapping("/city")
+    @PutMapping(value = "/city", consumes = MediaType.APPLICATION_JSON_VALUE)
     public void putCity(@RequestBody CityDto cityDto) {
         cityListService.updateCity(cityDto);
     }
 
+    @GetMapping("/city")
+    public CityDto getCity(@RequestParam Long id) {
+        return cityListService.getCity(id);
+    }
 }

@@ -11,6 +11,8 @@ import ru.idmikhailov.citylist.mapper.Mapper;
 import ru.idmikhailov.citylist.repository.CityRepository;
 import ru.idmikhailov.citylist.service.CityListService;
 
+import java.util.Optional;
+
 @Service
 @AllArgsConstructor
 public class CityListServiceImpl implements CityListService {
@@ -43,5 +45,12 @@ public class CityListServiceImpl implements CityListService {
 
         cityRepository.save(city);
 
+    }
+
+    @Transactional(readOnly = true)
+    public CityDto getCity(Long id) {
+        Optional<City> cityOptional = cityRepository.findById(id);
+        if (cityOptional.isEmpty()) return null;
+        return cityMapper.toDto(cityOptional.get());
     }
 }

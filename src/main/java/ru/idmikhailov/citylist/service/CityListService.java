@@ -7,4 +7,6 @@ public interface CityListService {
 
     Page<CityDto> getCityPage(int page, int size, String search);
     void updateCity(CityDto cityDto);
+
+    CityDto getCity(Long id);
 }
