@@ -4,4 +4,4 @@ set SPRING_DATASOURCE_PASSWORD="city"
 set SPRING_DATASOURCE_URL="jdbc:postgresql://localhost:5432/city"
 set SPRING_DATASOURCE_USERNAME="city"
 
-call mvnw.cmd clean install
+call mvnw.cmd clean install -DskipTests
