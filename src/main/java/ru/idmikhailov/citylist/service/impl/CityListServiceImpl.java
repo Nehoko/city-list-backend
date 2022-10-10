@@ -40,8 +40,14 @@ public class CityListServiceImpl implements CityListService {
         if (cityDto == null) return;
 
         City city = cityRepository.getReferenceById(cityDto.getId());
-        city.setName(cityDto.getName());
-        city.setPhoto(cityDto.getPhoto());
+        if (cityDto.getName()!=null && !cityDto.getName().isBlank() && !cityDto.getName().isEmpty()) {
+
+            city.setName(cityDto.getName());
+        }
+        if (cityDto.getPhoto()!=null && !cityDto.getPhoto().isBlank() && !cityDto.getPhoto().isEmpty()) {
+
+            city.setPhoto(cityDto.getPhoto());
+        }
 
         cityRepository.save(city);
 
