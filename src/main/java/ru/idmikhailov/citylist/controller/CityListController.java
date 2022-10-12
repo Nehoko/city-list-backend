@@ -9,7 +9,7 @@ import ru.idmikhailov.citylist.service.CityListService;
 
 @RestController
 @AllArgsConstructor
-@CrossOrigin(origins = "http://localhost:3000", maxAge = 3600)
+@CrossOrigin(origins = {"http://localhost:3000", "http://localhost:80"}, maxAge = 3600)
 public class CityListController {
 
     private final CityListService cityListService;
