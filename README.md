@@ -1,26 +1,30 @@
-### Requirements
+## Requirements
 - docker
 - docker-compose
 - java 17
 - docker daemon should be active before any manipulations (build/run/test)
 
-### Build
-#### MacOS or Linux
+## Users for testing
+- user:userPass
+- admin:adminPass
+
+## Build
+### MacOS or Linux
 `./build.sh`
 
-#### Windows
+### Windows
 `.\build.cmd`
 
-### Run
-#### MacOS or Linux
+## Run
+### MacOS or Linux
 `./start.sh`
 
-#### Windows
+### Windows
 `.\start.cmd`
 
-### Test
-#### MacOS or Linux
+## Test
+### MacOS or Linux
 `./test.sh`
 
-#### Windows
+### Windows
 `.\test.cmd`
